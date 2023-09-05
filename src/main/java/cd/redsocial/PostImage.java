@@ -8,11 +8,19 @@ package cd.redsocial;
 
 public class PostImage extends Post {
     protected String imageTitle;
-    protected String imageDimensions;
-    protected PostImage(String username, String postType, String imageTitle, String imageDimensions) {
+    protected int imageHeight;
+    protected int imageWidth;
+    /*
+     * PostImage class constructor.
+     * Calls Post's constructor.
+     * Post type will always be "Image".
+     * Needs a title String and dimensions.
+     * */
+    protected PostImage(String username, String imageTitle, int imageHeight, int imageWidth) {
         super(username);
-        super.postType = postType;
+        super.postType = "Image";
         this.imageTitle = imageTitle;
-        this.imageDimensions = imageDimensions;
+        this.imageHeight = imageHeight;
+        this.imageWidth = imageWidth;
     }
 }

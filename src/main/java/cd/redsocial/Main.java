@@ -1,5 +1,7 @@
 package cd.redsocial;
 
+import util.Input;
+
 import java.util.*;
 
 /*
@@ -9,14 +11,13 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
         int menuChoice;
 
         /*
          * Menu display by console.
          */
         do {
-            System.out.println("Select an option: \n" +
+            menuChoice = Input.integer("Select an option: \n" +
                     "1: create new user \n" +
                     "2: create new post \n" +
                     "3: create new comment \n" +
@@ -29,51 +30,29 @@ public class Main {
                     "10: show total number of comments \n" +
                     "11: exit \n" +
                     "Enter one number below to continue...\n");
-            menuChoice = sc.nextInt();
             switch (menuChoice)
             {
                 case 1:
-                    System.out.println("Enter your username: ");
-                    String createUser = sc.nextLine();
+                    String createUser = Input.string("Enter your username: ");
                     User newUser = new User(createUser);
+                    User.addUserToList(newUser);
                     break;
                 case 2:
-                    System.out.println("Enter your username: ");
-                    String userP = sc.nextLine();
-                    if(userP != null){
-                        System.out.println("Select post type: " +
-                                "1: Text \n" +
-                                "2: Image \n" +
-                                "3: Video \n");
-                        int pType = sc.nextInt();
-
+                    int pType = Input.integer("Select post type: " +
+                            "1: Text \n" +
+                            "2: Image \n" +
+                            "3: Video \n");
                         switch (pType) {
                             case 1:
-                                System.out.println("Write your post: ");
-                                String pContent = sc.nextLine();
-                                PostText newPost1 = new PostText(userP, "Text", pContent);
-                                //TODO add to post list
+                               // addPostText();
                                 break;
                             case 2:
-                                System.out.println("Write your post title: ");
-                                String iTitle = sc.nextLine();
-                                String iDimensions = sc.nextLine();
-                                PostImage newPost2 = new PostImage(userP, "Image", iTitle, iDimensions);
-                                //TODO add to post list
+                               // addPostImage();
                             case 3:
-                                System.out.println("Write your post title: ");
-                                String vTitle = sc.nextLine();
-                                String vQuality = sc.nextLine();
-                                String vLength = sc.nextLine();
-                                PostVideo newPost3 = new PostVideo(userP, "Video", vTitle, vQuality, vLength);
-                                //TODO add to post list
-                            case 4:
-                                System.out.println("Goodbye!");
-                                break;
+                                // addPostVideo();
                             default:
-                                System.out.println("You must choose a value between 1 and 4.");
+                                System.out.println("You must choose a value between 1 and 3.");
                         }
-                    }
                     break;
                 case 3:
                     System.out.println("Enter your username: ");

@@ -8,9 +8,15 @@ package cd.redsocial;
 
 public class PostText extends Post{
     protected String textContent;
-    protected PostText(String username, String postType, String textContent) {
+    /*
+     * PostText class constructor.
+     * Calls Post's constructor.
+     * Post type will always be "Text".
+     * Needs a content String.
+     * */
+    protected PostText(String username, String textContent) {
         super(username);
-        super.postType = postType;
+        super.postType = "Text";
         this.textContent = textContent;
     }
 }

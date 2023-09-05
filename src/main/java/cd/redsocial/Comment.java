@@ -19,22 +19,14 @@ public class Comment /*extends Post*/ {
 
     /*
      * Comment class constructor.
-     * Needs a username and post, gets date/time from system and adds an element to the count of posts.
+     * Needs a username (owner) and post(refersTo), gets date/time from system and adds an element to the count of comments.
      * */
-    protected Comment(String username, String commentText) {
-
+    protected Comment(User owner, String commentText) {
+        this.owner = owner;
         this.commentDate = Calendar.getInstance();
         this.commentText = commentText;
         // commentList.add(commentText);
         countComments++;
-    }
-
-    public Calendar getCommentDate() {
-        return commentDate;
-    }
-
-    public void setCommentDate(Calendar commentDate) {
-        this.commentDate = commentDate;
     }
 
     public User getOwner() {
@@ -47,10 +39,6 @@ public class Comment /*extends Post*/ {
 
     public String getCommentText() {
         return commentText;
-    }
-
-    public void setCommentText(String commentText) {
-        this.commentText = commentText;
     }
 
     public static int getCountComment() {

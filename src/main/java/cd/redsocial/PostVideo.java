@@ -8,11 +8,17 @@ package cd.redsocial;
 
 public class PostVideo extends Post {
     protected String videoTitle;
-    protected String videoQuality;
-    protected String videoLength;
-    protected PostVideo(String username, String postType, String videoTitle, String videoQuality, String videoLength) {
+    protected int videoQuality;
+    protected int videoLength;
+    /*
+     * PostVideo class constructor.
+     * Calls Post's constructor.
+     * Post type will always be "Video".
+     * Needs a title String, quality int and length int.
+     * */
+    protected PostVideo(String username, String videoTitle, int videoQuality, int videoLength) {
         super(username);
-        super.postType = postType;
+        super.postType = "Video";
         this.videoTitle = videoTitle;
         this.videoQuality = videoQuality;
         this.videoLength = videoLength;
