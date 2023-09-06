@@ -15,7 +15,7 @@ public class Main {
          * Menu display by console.
          */
         do {
-            menuChoice = Input.integer("Welcome to RedSocial!" +
+            menuChoice = Input.integer("Welcome to RedSocial! \n" +
                     "Select an option to continue: \n" +
                     "1: Register \n" +
                     "2: Log in \n" +
@@ -34,8 +34,8 @@ public class Main {
                         if (u.getUsername().equals(loginUser)){
                             int loginMenu;
                             do {
-                                loginMenu = Input.integer("Welcome " + loginUser +
-                                        "Select one action: " +
+                                loginMenu = Input.integer("Welcome, " + loginUser + "!\n" +
+                                        "Select one action: \n" +
                                         "1: Add new post \n" +
                                         "2: Add new comment \n" +
                                         "3: Show user's list \n" +
@@ -50,7 +50,7 @@ public class Main {
                                     case 1:
                                         int pType;
                                         do {
-                                            pType = Input.integer("Select post type: " +
+                                            pType = Input.integer("Select post type: \n" +
                                                     "1: Text \n" +
                                                     "2: Image \n" +
                                                     "3: Video \n" +
@@ -113,13 +113,11 @@ public class Main {
                         }
                     }
                 case 3:
-                    System.out.println("Goodbye!");
                     break;
                 default:
                     System.out.println("You must choose a value between 1 and 3.");
             }
-        } while (menuChoice != 11);
-
+        } while (menuChoice != 3);
 
     }
 }
