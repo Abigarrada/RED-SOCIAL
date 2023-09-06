@@ -29,6 +29,7 @@ public class Input {
      * @return integer entered by the user.
      */
     public static int integer() {
+
         return Input.integer(null);
     }
 
@@ -50,6 +51,7 @@ public class Input {
      * @return real number entered by the user.
      */
     public static double real() {
+
         return Input.real(null);
     }
 

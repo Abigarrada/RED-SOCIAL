@@ -6,19 +6,15 @@ import java.util.*;
 
 /*
  * Class to handle users.
- * Must contain username, following users's list, post's list and comment's list.
+ * Must contain username, following users' list, post's list and comment's list.
  * Users can be created, listed and deleted.
  * One user can follow/unfollow another user.
  */
 
-public class User {
-    protected String username;
-    protected static List<User> userList = new ArrayList<>();
-    protected static List<Post> postList = new ArrayList<>();
-    protected static List<String> commentList = new ArrayList<>();
+public class User extends Network {
     protected List<String> followingList = new ArrayList<>();
     protected List<String> followersUserList = new ArrayList<>();
-    private static int countUsers = 0;
+    protected static int countUsers = 0;
     Scanner sc = new Scanner(System.in);
 
     /*
@@ -27,12 +23,8 @@ public class User {
      * Needs a username and adds an element to the count of users.
      * */
     protected User(String username) {
-        if(username.trim().isEmpty()){
-            System.out.println("You must introduce a valid username.");
-        } else{
-            this.username = username.toLowerCase();
-            countUsers++;
-        }
+        super(username);
+        countUsers++;
     }
 
     /*
@@ -64,20 +56,7 @@ public class User {
         String title = Input.string("Write your post title: ");
         int quality = Input.integer("Quality: ");
         int length = Input.integer("Length: ");
-        postList.add(new PostImage(this.getUsername(), title, quality, length));
-    }
-    /*
-     * Method to add a new comment to a post.
-     * */
-    protected void addComment(){
-        String comment = Input.string("Write your comment: ");
-        postList.add(new Comment(this.getUsername(), comment));
-    }
-    /*
-     * Method to get the current user's username.
-     * */
-    protected String getUsername() {
-        return username;
+        postList.add(new PostVideo(this.getUsername(), title, quality, length));
     }
     /*
      * Method to change the current user's username.
@@ -90,15 +69,15 @@ public class User {
      * Method to get the list of users.
      * */
     protected static void getUserList() {
-        for (String u: userList) {
-            System.out.println(u);
+        for (User u: userList) {
+            System.out.println(u.getUsername());
         }
     }
     /*
      * Method to get the list of posts made by the current user.
      * */
     protected static void getPostList() {
-        for (String p: postList) {
+        for (Post p: postList) {
             System.out.println(p);
         }
     }
@@ -106,7 +85,7 @@ public class User {
      * Method to get the list of comments made by the current user.
      * */
     protected static void getCommentList() {
-        for (String c: commentList) {
+        for (Comment c: commentList) {
             System.out.println(c);
         }
     }
@@ -122,29 +101,31 @@ public class User {
      * Method to get the total users of posts created.
      * */
     public static int getCountUsers() {
+
         return countUsers;
     }
     /*
      * Method to delete users from user list.
      * */
     protected static void deleteUser(String name){
-        int count = 0;
-        for (String u: userList) {
-            count++;
-            if (u.equals(name)){
-                userList.remove(count);
-                System.out.println("The user " + name + " was deleted succesfully.");
+
+        for (User u: userList) {
+            if (u.getUsername().equals(name)){
+                userList.remove(u);
+                System.out.println("The user was deleted.");
             }
         }
     }
     /*
      * Method to delete posts from post list.
      * */
-    protected void deletePost(String pt){ //TODO: this returns an error, must be modified
-        for (String p: postList) {
+    protected void deletePost(String pt){
+        int count = 0;
+        for (Post p: postList) {
+            count++;
             if (p.equals(pt)){
-                postList.remove(pt);
-                System.out.println("The post " + pt + "was deleted succesfully.");
+                postList.remove(count);
+                System.out.println("The post was deleted.");
             }
         }
     }
@@ -152,10 +133,12 @@ public class User {
      * Method to delete comments from comment list.
      * */
     protected void deleteComment(String cm){ //TODO: this returns an error, must be modified
-        for (String c: commentList) {
+        int count = 0;
+        for (Comment c: commentList) {
+            count++;
             if (c.equals(cm)){
-                commentList.remove(cm);
-                System.out.println("The post " + cm + "was deleted succesfully.");
+                commentList.remove(count);
+                System.out.println("The comment was deleted.");
             }
         }
     }
@@ -176,7 +159,7 @@ public class User {
                 i++;
                 if (ff.equals(name)){
                     followingList.remove(i);
-                    System.out.println("The user " + name + " was deleted succesfully from your following list.");
+                    System.out.println("The user " + name + " was deleted from your following list.");
                 }
             }
         } catch (Exception e) {
