@@ -20,35 +20,36 @@ public class Storage {
     /*
      * Method to add a new text post.
      * */
-    protected void addPostText(){
+    protected static void addPostText(String loginUser){
+        String title = Input.string("Write your post title: ");
         String content = Input.string("Write your post: ");
-        Storage.postList.add(new PostText(getUsername(), content));
+        Storage.postList.add(new PostText(loginUser, title, content));
     }
     /*
      * Method to add a new image post.
      * */
-    protected void addPostImage(){
+    protected static void addPostImage(String loginUser){
         String title = Input.string("Write your post title: ");
         int height = Input.integer("Height: ");
         int width = Input.integer("Width: ");
-        Storage.postList.add(new PostImage(getUsername(), title, height, width));
+        Storage.postList.add(new PostImage(loginUser, title, height, width));
     }
     /*
      * Method to add a new video post.
      * */
-    protected void addPostVideo(){
+    protected static void addPostVideo(String loginUser){
         String title = Input.string("Write your post title: ");
         int quality = Input.integer("Quality: ");
         int length = Input.integer("Length: ");
-        Storage.postList.add(new PostVideo(getUsername(), title, quality, length));
+        Storage.postList.add(new PostVideo(loginUser, title, quality, length));
     }
 
     /*
      * Method to add a new comment to a post.
      * */
-    protected void addComment(){
+    protected static void addComment(String loginUser, int postID){
         String comment = Input.string("Write your comment: ");
-        Storage.commentList.add(new Comment(getUsername(), getPostID(), comment));
+        Storage.commentList.add(new Comment(loginUser, postID, comment));
     }
 
     /*
