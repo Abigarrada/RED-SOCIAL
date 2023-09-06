@@ -14,13 +14,13 @@ import java.util.*;
 public abstract class Post {
     protected int postID;
     protected User postOwner;
-    protected Calendar postDate;
+    protected Date postDate;
     protected String postType;
     protected static int countPost = 0;
 
     /*
      * Post class constructor.
-     * Needs a username, gets date/time from system and adds an element to the count of posts.
+     * Needs a username, gets date from system and adds an element to the count of posts.
      * */
     protected Post(String username){
         for (User u: Storage.userList) {
@@ -29,7 +29,7 @@ public abstract class Post {
             }
         }
         this.postID = countPost;
-        this.postDate = Calendar.getInstance();
+        this.postDate = new Date();
         countPost++;
     }
 

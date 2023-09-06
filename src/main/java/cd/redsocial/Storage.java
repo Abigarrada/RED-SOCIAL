@@ -77,12 +77,10 @@ public class Storage {
     /*
      * Method to delete posts from post list.
      * */
-    protected void deletePost(String pt){
-        int count = 0;
+    protected static void deletePost(int pt){
         for (Post p: Storage.postList) {
-            count++;
-            if (p.equals(pt)){
-                Storage.postList.remove(count);
+            if (p.postID == pt){
+                Storage.postList.remove(p);
                 System.out.println("The post was deleted.");
             }
         }
@@ -90,12 +88,10 @@ public class Storage {
     /*
      * Method to delete comments from comment list.
      * */
-    protected void deleteComment(String cm){ //TODO: this returns an error, must be modified
-        int count = 0;
+    protected static void deleteComment(int cm){
         for (Comment c: Storage.commentList) {
-            count++;
-            if (c.equals(cm)){
-                Storage.commentList.remove(count);
+            if (c.commentID == cm){
+                Storage.commentList.remove(c);
                 System.out.println("The comment was deleted.");
             }
         }

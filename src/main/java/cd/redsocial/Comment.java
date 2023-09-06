@@ -11,7 +11,7 @@ import java.util.*;
 
 public class Comment {
     protected int commentID;
-    protected Calendar commentDate;
+    protected Date commentDate;
     protected User commentOwner;
     protected String commentText;
     private static int countComments = 0;
@@ -32,7 +32,7 @@ public class Comment {
                 this.refersTo = p;
             }
         }
-        this.commentDate = Calendar.getInstance();
+        this.commentDate = new Date();
         this.commentText = commentText;
         this.commentID = countComments;
         countComments++;
