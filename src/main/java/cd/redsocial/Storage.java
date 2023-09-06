@@ -57,6 +57,16 @@ public class Storage {
      * */
     protected static void deleteUser(String name){
 
+        for(Comment c: Storage.commentList){
+            if(c.getCommentOwner().toString().equals(name)){
+                Storage.commentList.remove(c);
+            }
+        }
+        for(Post p: Storage.postList){
+            if(p.getPostOwner().toString().equals(name)){
+                Storage.postList.remove(p);
+            }
+        }
         for (User u: Storage.userList) {
             if (u.getUsername().equals(name)){
                 Storage.userList.remove(u);
