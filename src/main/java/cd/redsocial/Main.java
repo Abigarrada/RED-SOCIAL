@@ -3,7 +3,7 @@ package cd.redsocial;
 import util.Input;
 
 /*
- * Main class with menu options.
+ * Main class with menu options.*
  * */
 
 public class Main {
