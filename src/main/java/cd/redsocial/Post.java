@@ -1,7 +1,5 @@
 package cd.redsocial;
 
-import util.Input;
-
 import java.util.*;
 
 /*
@@ -13,7 +11,7 @@ import java.util.*;
  * Must contain the number of comments created per post.
  */
 
-public abstract class Post extends Network {
+public abstract class Post {
     protected int postID;
     protected User postOwner;
     protected Calendar postDate;
@@ -25,8 +23,7 @@ public abstract class Post extends Network {
      * Needs a username, gets date/time from system and adds an element to the count of posts.
      * */
     protected Post(String username){
-        super(username);
-        for (User u: userList) {
+        for (User u: Storage.userList) {
             if (u.getUsername().equals(username)){
                 this.postOwner = u;
             }
@@ -36,13 +33,7 @@ public abstract class Post extends Network {
         countPost++;
     }
 
-    /*
-     * Method to add a new comment to a post.
-     * */
-    protected void addComment(){
-        String comment = Input.string("Write your comment: ");
-        commentList.add(new Comment(this.getUsername(), this.getPostID(), comment));
-    }
+
     /*
      * Method to get one post's ID.
      * */

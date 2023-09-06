@@ -9,7 +9,7 @@ import java.util.*;
  * Comments can be created, listed and deleted.
  */
 
-public class Comment extends Network {
+public class Comment {
     protected int commentID;
     protected Calendar commentDate;
     protected User commentOwner;
@@ -22,13 +22,12 @@ public class Comment extends Network {
      * Needs a username (owner) and post(refersTo), gets date/time from system and adds an element to the count of comments.
      * */
     protected Comment(String username, int postID, String commentText) {
-        super(username);
-        for (User u: userList) {
+        for (User u: Storage.userList) {
             if (u.getUsername().equals(username)){
                 this.commentOwner = u;
             }
         }
-        for (Post p: postList) {
+        for (Post p: Storage.postList) {
             if (p.getPostID() == postID){
                 this.refersTo = p;
             }

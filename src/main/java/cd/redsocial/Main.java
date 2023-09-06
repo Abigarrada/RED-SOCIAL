@@ -33,7 +33,7 @@ public class Main {
                 case 1:
                     String createUser = Input.string("Enter your username: ");
                     User newUser = new User(createUser);
-                    User.addUserToList(newUser);
+                    Storage.addUserToList(newUser);
                     break;
                 case 2:
                     int pType = Input.integer("Select post type: " +
@@ -59,22 +59,22 @@ public class Main {
                     break;
                 case 4:
                     String dUser = Input.string("Enter the username you want to delete: ");
-                    User.deleteUser(dUser);
+                    Storage.deleteUser(dUser);
                     break;
                 case 5:
-                    User.getUserList();
+                    Storage.getUserList();
                     break;
                 case 6:
                     System.out.println(User.getCountUsers());
                     break;
                 case 7:
-                    User.getPostList();
+                    Storage.getPostList();
                     break;
                 case 8:
                     System.out.println(Post.getCountPost());
                     break;
                 case 9:
-                    User.getCommentList();
+                    Storage.getCommentList();
                     break;
                 case 10:
                     System.out.println(Comment.getCountComment());
