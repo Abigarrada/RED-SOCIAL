@@ -46,13 +46,6 @@ public class Comment {
         return commentOwner;
     }
     /*
-     * Method to set the owner of a comment.
-     * */
-    public void setCommentOwner(User owner) {
-
-        this.commentOwner = owner;
-    }
-    /*
      * Method to get the content of a post.
      * */
     public String getCommentText() {
